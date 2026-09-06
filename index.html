@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="LUMEN · ÉCLIPSE ONE — 光与金属的雕塑。沉浸式 3D 产品展示厅。" />
+  <title>LUMEN · ÉCLIPSE ONE — 沉浸式产品展厅</title>
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <!-- 背景光晕（缓慢呼吸） -->
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="glow glow--b" aria-hidden="true"></div>
+
+  <!-- WebGL 画布 -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+
+  <!-- 顶部进度条 -->
+  <div class="progress-bar" aria-hidden="true"><i></i></div>
+
+  <!-- 页头 -->
+  <header class="site-head">
+    <a class="brand" href="#hero">LUMEN<span class="brand-r">®</span></a>
+    <nav class="site-nav mono">
+      <a href="#gallery">展厅</a>
+      <a href="#details">细节</a>
+      <a href="#specs">参数</a>
+    </nav>
+  </header>
+
+  <!-- 右侧章节圆点导航 -->
+  <nav class="dots" aria-label="章节导航">
+    <button data-target="#hero" aria-label="首页"><span class="mono">首 页</span></button>
+    <button data-target="#gallery" aria-label="展厅"><span class="mono">展 厅</span></button>
+    <button data-target="#details" aria-label="细节"><span class="mono">细 节</span></button>
+    <button data-target="#specs" aria-label="参数"><span class="mono">参 数</span></button>
+    <button data-target="#cta" aria-label="预订"><span class="mono">预 订</span></button>
+  </nav>
+
+  <!-- 下滑提示 -->
+  <div class="scroll-hint mono" aria-hidden="true">SCROLL · 探索<span class="line"></span></div>
+
+  <main>
+    <!-- 幕 2 · Hero -->
+    <section class="sec sec--hero" id="hero">
+      <h1 class="hero-title">
+        <span class="line"><i>TIME,</i></span>
+        <span class="line"><i>SCULPTED</i></span>
+        <span class="line line--outline"><i>IN LIGHT</i></span>
+      </h1>
+      <p class="hero-sub">ÉCLIPSE ONE — 光与曲线的雕塑</p>
+      <p class="hero-meta mono">CNC 6061 AL · 喷砂哑光 · ±0.02 MM · 一体成型</p>
+    </section>
+
+    <!-- 幕 3 · 核心展厅（pin 锁定整屏，滚动推近 + 自转） -->
+    <section class="sec sec--gallery" id="gallery">
+      <div class="gallery-tag mono">02 — SHOWROOM</div>
+      <div class="cap cap-1">
+        <em class="mono">01 · CNC 精铣</em>
+        <h3>一体成型</h3>
+        <p>6061 铝合金整块精铣，42 道工序，公差 ±0.02 MM。</p>
+      </div>
+      <div class="cap cap-2">
+        <em class="mono">02 · ANODIZE 氧化</em>
+        <h3>喷砂哑光</h3>
+        <p>三级喷砂 + 阳极氧化，哑光色泽均匀，耐指纹耐候。</p>
+      </div>
+      <div class="cap cap-3">
+        <em class="mono">03 · SNAP-FIT 卡扣</em>
+        <h3>凹槽卡扣</h3>
+        <p>凹槽与卡扣一体铣削，装配严丝合缝，拆装无痕。</p>
+      </div>
+      <div class="gallery-track mono" aria-hidden="true">KEEP SCROLLING — 00%</div>
+    </section>
+
+    <!-- 幕 4 · 细节特写（pin + 三机位 + 部件定位标签） -->
+    <section class="sec sec--details" id="details">
+      <div class="gallery-tag mono">03 — DETAILS</div>
+      <div class="hotspot" id="hotspot-slot">
+        <span class="hs-dot"></span><span class="hs-line"></span>
+        <span class="hs-card"><b class="mono">TOP SLOT 顶部凹槽</b>CNC 精铣凹槽 · 卡扣严丝合缝</span>
+      </div>
+      <div class="hotspot" id="hotspot-texture">
+        <span class="hs-dot"></span><span class="hs-line"></span>
+        <span class="hs-card"><b class="mono">BACK TEXTURE 背板纹理</b>细腻喷砂 · 质感均匀</span>
+      </div>
+      <div class="hotspot" id="hotspot-buttonhole">
+        <span class="hs-dot"></span><span class="hs-line"></span>
+        <span class="hs-card"><b class="mono">BUTTON HOLE 按键孔</b>侧边按键孔 · 定位精准</span>
+      </div>
+    </section>
+
+    <!-- 幕 5 · 参数数据 -->
+    <section class="sec sec--specs" id="specs">
+      <div class="specs-head">
+        <em class="mono">04 — SPECS</em>
+        <h2>以数字<br />丈量守护</h2>
+      </div>
+      <div class="spec-grid"></div>
+      <div class="charts">
+        <figure class="chart-panel">
+          <figcaption class="mono">MATERIAL · 材质特性</figcaption>
+          <canvas id="radar"></canvas>
+        </figure>
+        <figure class="chart-panel">
+          <figcaption class="mono">QC · 30 天良率抽检（%）</figcaption>
+          <canvas id="spark"></canvas>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 幕 6 · CTA -->
+    <section class="sec sec--cta" id="cta">
+      <div class="cta-inner">
+        <em class="mono" data-reveal>05 — RESERVE</em>
+        <h2 data-reveal>拥有此刻。</h2>
+        <p data-reveal>ÉCLIPSE ONE 金属中框，现已开启预订。</p>
+        <button class="cta-btn" data-cursor data-reveal>立即预订 <span class="mono">RESERVE NOW</span></button>
+      </div>
+      <footer class="site-foot">
+        <span class="mono">© 2026 LUMEN ATELIER — CRAFTED IN LIGHT</span>
+        <span class="foot-links mono"><a href="#hero">隐私</a> · <a href="#hero">条款</a></span>
+        <button class="to-top mono" data-cursor>↑ 返回顶部 · 重播旅程</button>
+      </footer>
+    </section>
+  </main>
+
+  <!-- reduced-motion 专属：手动机位切换 -->
+  <div class="pose-switch mono" hidden>
+    <button data-cursor class="is-on">正面</button>
+    <button data-cursor>背面</button>
+    <button data-cursor>侧边</button>
+  </div>
+
+  <!-- 拖拽旋转提示（首次拖拽后消失） -->
+  <div class="drag-hint" aria-hidden="true">
+    <span class="dh-track"><b class="dh-cap">‹</b><span class="dh-line"><i></i></span><b class="dh-cap">›</b></span>
+    <span class="dh-text mono">按住左键拖动 · 360° 查看</span>
+  </div>
+
+  <!-- 幕 1 · 加载页 -->
+  <div id="loader" role="status" aria-label="加载中">
+    <div class="loader-glow" aria-hidden="true"></div>
+    <div class="loader-inner">
+      <div class="loader-brand" data-text="LUMEN" aria-label="LUMEN"></div>
+      <div class="loader-bar"><i></i></div>
+      <div class="loader-row">
+        <span class="loader-num mono">00</span>
+        <span class="loader-tip mono">CALIBRATING LIGHT · 校准光路</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自定义光标 -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-label mono"></div>
+  </div>
+
+  <!-- 帧率监控读数 -->
+  <div class="fps mono" aria-hidden="true"></div>
+
+  <!-- WebGL 不可用时的静态降级页 -->
+  <div id="fallback" hidden>
+    <div class="fallback-card">
+      <svg class="fallback-watch" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="38" y="16" width="44" height="88" rx="11" fill="none" stroke="#3d7e9f" stroke-width="3" />
+        <rect x="45" y="23" width="30" height="74" rx="7" fill="#0b0d10" stroke="#c8ccd4" stroke-width="1.5" />
+        <circle cx="53" cy="32" r="4" fill="none" stroke="#3d7e9f" stroke-width="2" />
+        <circle cx="64" cy="32" r="4" fill="none" stroke="#3d7e9f" stroke-width="2" />
+      </svg>
+      <h2>当前环境不支持 WebGL</h2>
+      <p>3D 展厅无法在此浏览器中呈现。请使用最新版 Chrome / Edge / Safari，
+        或在开启硬件加速后重新访问。以下为核心参数：</p>
+      <p class="mono">ÉCLIPSE ONE — 158.3 MM · 26 G · 6061 AL · ±0.02 MM</p>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
